@@ -1,0 +1,18 @@
+application: data-gearbox-368
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+libraries:
+- name: webapp2
+  version: latest
+- name: jinja2
+  version: latest
+
+handlers:
+- url: /admin/.*
+  script: google.appengine.ext.admin.application
+  login: admin
+- url: /.*
+  script: yx.application

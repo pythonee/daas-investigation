@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <body>
+    {% if not err %}
+      <form>Company Name:
+        <select name="company_name">
+          <option value="">No Select</option>
+          {% for company in companys %}
+          <option value="{{ company }}" {% if company == company_name %} selected="selected" {% endif %}>{{ company }}</option>
+          {% endfor %}
+        </select>
+        <input type="submit" value="switch">
+      </form>
+      <div  style="margin: 10px 0">
+        <form> 
+          <input type="hidden" name="opt" value="insert"/>
+          <input type="submit" value="add more member">
+        </form>
+      </div>
+
+      <table border="1" >
+        <tr>
+          <td>first name</td>
+          <td>last name</td>
+          <td>company</td>
+          <td>number</td>
+          <td>is_married</td>
+          <td>desc</td>
+          <td>date</td>
+          <td>opt</td>
+        </tr>
+        {% for member in members %}
+          <tr>
+            <td>{{ member.first_name}} </td>
+            <td>{{ member.last_name }}</td>
+            <td>{{ member.company }} </td>
+            <td>{{ member.number}}</td>
+            <td>{{ member.is_married}}</td>
+            <td>{{ member.desc}}</td>
+            <td>{{ member.date}}</td>
+            <td>
+              <form>
+                <input type="hidden" name="opt" value="delete"/>
+                <input type="hidden" name="id" value="{{ member.key.id() }}"/>
+                <input type="hidden" name="company" value="{{ member.company }}"/>
+                <input type="submit" value="delete">
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+      {% else %}
+        <h3>Fatal Error Happen since:</h3>
+        <p>{{ err }}<p>
+        <a href="/"> back to homepage </a>
+      {% endif %}
+  </body>
+</html>
+{% endautoescape %}
+
