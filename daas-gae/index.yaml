@@ -10,8 +10,67 @@ indexes:
 # automatically uploaded to the admin console when you next deploy
 # your application using appcfg.py.
 
-- kind: Greeting
+- kind: Member
+  properties:
+  - name: company
+  - name: date
+
+- kind: Member
+  properties:
+  - name: date
+  - name: first_name
+  - name: last_name
+
+- kind: Member
+  properties:
+  - name: first_name
+  - name: date
+
+- kind: Member
+  ancestor: yes
+  properties:
+  - name: company
+
+- kind: Member
+  ancestor: yes
+  properties:
+  - name: date
+
+- kind: Member
   ancestor: yes
   properties:
   - name: date
     direction: desc
+
+- kind: Member
+  ancestor: yes
+  properties:
+  - name: first_name
+
+- kind: Member
+  ancestor: yes
+  properties:
+  - name: first_name
+  - name: date
+
+- kind: Member
+  ancestor: yes
+  properties:
+  - name: first_name
+    direction: desc
+
+- kind: Test
+  properties:
+  - name: a
+  - name: b
+  - name: c
+
+- kind: Test
+  properties:
+  - name: a
+  - name: c
+
+- kind: Test
+  properties:
+  - name: b
+  - name: c

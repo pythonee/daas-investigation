@@ -4,6 +4,11 @@ runtime: python27
 api_version: 1
 threadsafe: true
 
+builtins:
+- appstats: on
+- deferred: on
+- remote_api: on
+
 libraries:
 - name: webapp2
   version: latest
